@@ -1,0 +1,5 @@
+APP_URL="http://localhost:4000"
+PORT=4000
+JWTEXP=
+JWT_KEY=
+ENABLE_LOGS=false
