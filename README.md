@@ -1,6 +1,6 @@
 # NodeJS Blog System
 
-Welcome to our Node.js secure RESTful API for a blog system by using Test-Driven Development (TDD)! This README will guide you through setting up and using the API.
+Welcome to my Node.js secure RESTful API for a blog system by using Test-Driven Development (TDD)! This README will guide you through setting up and using the API.
 
 ## 🚀 Getting Started
 
