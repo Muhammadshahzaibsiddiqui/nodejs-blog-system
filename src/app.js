@@ -6,7 +6,6 @@ require("dotenv").config();
 
 const logger = require('./middlewares/logger');
 const securityMiddleware = require("./middlewares/auth");
-const exclusion = require("./utils/whitelist");
 
 const swaggerSpec = require("./utils/swagger");
 const swaggerUi = require("swagger-ui-express");
@@ -18,19 +17,15 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(morgan("dev"))
+
+// Logger Middle
 app.use(logger);
 
 // Swagger page
 app.use("/api/docs/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// Middle security
-app.use((req, res, next) => {
-  if (!exclusion.inWhitelist(req.originalUrl)) {
-    securityMiddleware.checkToken(req, res, next);
-  } else {
-    next();
-  }
-});
+// Security Middle
+app.use(securityMiddleware);
 
 app.get("/api/status", (req, res) => {
   res.status(200).send({ status: 200 });
